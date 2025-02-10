@@ -1,0 +1,65 @@
+__pycache__/
+*.pyc
+.DS_Store  # macOS specific
+Thumbs.db  # Windows specific
+.env       # Environment variables (sensitive!)
+.virtualenv  # Old virtualenv directory name
+venv/* 
+.venv/*    # Virtual environment (recommended)
+env/        # Another common virtual environment directory name
+*.sqlite3   # SQLite database files (if not for production)
+db.sqlite3  # SQLite database files (if not for production)
+media/*     # Media files (unless you want to track them)
+static/*    # Static files (unless you want to track them)
+.pytest_cache # pytest cache directory
+htmlcov/    # Coverage reports
+.coverage   # Coverage data file
+instance/   # Instance-specific data (e.g., logs, uploads)
+logs/       # Log files
+*.log      # Generic log files
+*.swp      # Swap files (Vim)
+*~         # Backup files (various editors)
+.idea/      # IntelliJ IDEA project files
+.vscode/    # VS Code project files
+.mypy_cache/ # Mypy cache files
+
+# If you use Docker
+.dockerignore
+Dockerfile* # Specific Dockerfiles you might not want to share
+
+# credjson
+cred.json
+
+# If you use Celery
+celerybeat.pid
+
+# If you use other tools, add their specific files/directories here.
+
+# Django specific additions (optional, but good practice):
+local_settings.py  # Local settings (sensitive!)
+settings/*.pyc    # Compiled settings files
+# secrets.json    # Another location for sensitive information
+# myapp/migrations/* # Exclude migrations if you manage them differently
+# !myapp/migrations/__init__.py # But keep the __init__.py files!
+
+
+# Example of excluding specific media/static files (if needed):
+# media/uploads/large_file.zip
+# static/css/debug.css
+
+# If you use a package manager (e.g., npm, yarn):
+node_modules/
+.npmrc
+yarn.lock
+package-lock.json
+
+# For distribution:
+dist/
+build/
+*.egg
+*.whl
+
+# Temporary files created by your OS or IDE
+.tmp/
+tmp/
+*.tmp
