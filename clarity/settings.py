@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j=v%da5fz+&ktvobw5cvqo5*dworrit(x8)os%bm!lw*1rv^l*'
+SECRET_KEY = os.getenv("APPLICATION_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'main',
+    'genai',
     'corsheaders'
 ]
 
@@ -119,6 +123,11 @@ import os
 # Firebase Configuration
 FIREBASE_CERT_PATH = os.path.join(BASE_DIR, "cred.json")
 
+AUTH_USER_MODEL = "main.User"
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Allow Next.js frontend
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -129,3 +138,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'main.authenticate.EmailBackend',  # Add your custom backend
+    # 'django.contrib.auth.backends.ModelBackend', # Keep the default ModelBackend as fallback (optional)
+]
